@@ -1,55 +1,53 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-const heading = React.createElement("h1",{id:"heading"}, "Hello World from React");
-console.log(heading); //object
-const root = ReactDOM.createRoot(document.getElementById("root")); // create root
-// root.render(heading); // render method convert object to tag and put that inside root
+// JSX is React element
+// JSX - HTML-like or XML-like syntax (JSX is not HTML)
+// JSX (transpiled by Parcel before it reaches the JS Engine) - Parcel - Babel (parcel uses babel for tranpilation)
+// JSX => React.createElement => reactElement-JS Object => HTMLElement(render)
+const elem = <spam>react elem</spam>
+const jsxHeading = (<h1 id="heading" classname="head" tabIndex="1">
+    {elem}<br/>
+    Namaste React from JSX
+    </h1>);
+const root = ReactDOM.createRoot(document.getElementById("root"));
+// root.render(jsxHeading);
 
-/*
-<div id="parent">
-    <div id="child">
-        <h1> I am h1 tag</h1>
-        <h2> I am h2 tag</h2>
-    </div>
-</div>
-*/
+// React Component
+// Class Based Component - OLD
+// Functional Component - NEW
 
-// const parent = React.createElement(
-//     "div",
-//     {id:"parent"},
-//     React.createElement(
-//         "div",
-//         {id:"child"},
-//         [React.createElement("h1",{},"I am h1 tag"), React.createElement("h2",{}, "I am h2 tag")]
-//     )
-// );
-
-/*
-<div id="parent">
-    <div id="child1">
-        <h1> I am h1 tag</h1>
-        <h2> I am h2 tag</h2>
-    </div>
-    <div id="child2">
-        <h1> I am h1 tag</h1>
-        <h2> I am h2 tag</h2>
-    </div>
-</div>
-*/
-
-const parent = React.createElement(
-    "div",
-    {id:"parent"},
-    [React.createElement(
-            "div",
-            {id:"child1"},
-            [React.createElement("h1",{},"This is react"), React.createElement("h2",{}, "I am h2 tag")]
-    ),
-    React.createElement(
-        "div",
-        {id:"child2"},
-        [React.createElement("h1",{},"I am h1 tag"), React.createElement("h2",{}, "I am h2 tag")]
-    )]
+// REACT FUNCTIONAL COMPONENT
+const TitleComponent = () => (
+    <h1>Title component</h1>
 );
+const HeadingComponent = () => {
+    return <h1>Namaste React Functional Component</h1>;
+};
+// for single line we can remove return and parenthesis
+const HeadingComponent2 = () =>  <h1>Namaste React Functional Component</h1>;
+//multi line (parenthesis)
+const HeadingComponent3 = () =>  (
+<h1>Namaste React Functional Component</h1>
+);
+// root.render(<HeadingComponent/>);
+const number = 10000;
+const HeaderComponent = () => (
+    <div id="container">
+        {jsxHeading}
+        {number} <br/>
+        {100 + 20}
+        <TitleComponent/>
+        <h1>namaste react</h1>
+    </div>
+)
+root.render(<HeaderComponent/>);
 
-root.render(parent);
+// normal functional component 
+const TitleComp = function () {
+    return (
+        <h1 className="title">
+            Namaste react from normal functional component
+        </h1>
+    )
+}
+//root.render(<TitleComp/>);
