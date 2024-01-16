@@ -19,3 +19,32 @@
 - Tree Shaking - remove unused code
 - Transpilation
 - Different dev and prod bundles
+
+# Food order app
+
+/**
+ * Header 
+ * - Logo
+ * - Nav Items
+ * Body
+ * - Search
+ * - RestaurantContainer
+ *   - RestaurantCard
+ *      - Image
+ *      - Name of restaurant, Star rating, cuisines etc.
+ * Footer
+ * - Copyright
+ * - Links
+ * - Address
+ * - Contact
+ */
+
+ # two types of export import 
+
+ - default export/import
+ export default Component;
+ import Component from "path";
+
+- named export/ import
+export const Component;
+import {Component} from "path";
