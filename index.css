@@ -21,6 +21,7 @@
 .restaurant-card {
     width: 200px;
     padding: 5px;
+    margin: 5px;
 }
 .restaurant-container {
     display: flex;
@@ -39,5 +40,21 @@
 
 .filter-button {
     margin: 10px;
+    cursor: pointer;
+}
+
+.shimmer-container { 
+    display: flex;
+    flex-wrap: wrap;
+}
+.shimmer-card {
+    width: 200px;
+    height: 400px;
+    background-color: #f0f0f0;
+    margin: 20px;
+}
+
+.login-btn {
+    padding: 0 20px;
     cursor: pointer;
 }
