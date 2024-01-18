@@ -11,6 +11,9 @@ import Shimmer from "./Shimmer";
     // normal js variable
     // let listOfRestautants = restaurantList;
     // whenever state variable update, react triggers a reconciliaion cycle(re-renders the component)
+    // if no dependency array => useeffect is called on every render
+    // if dependency array is empty = [] => useEffect is called on initial render(just once)
+    // if dependency array is [toggleBtnName] => called everytime toggleBtnName is updated
     useEffect(()=>{
         // console.log("useEffect called");
         fetchData();
