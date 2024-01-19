@@ -48,3 +48,10 @@
 - named export/ import
 export const Component;
 import {Component} from "path";
+
+# React hooks
+(Normal JS utility functions)
+- useState() - superpowerful state variables in react
+- useEffect()
+
+# 2 types of routing in web apps

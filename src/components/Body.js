@@ -1,6 +1,7 @@
   import RestaurantCard from "./RestaurantCard";
   import {restaurantList} from "../utils/mockData";
   import { useState, useEffect } from "react";
+  import { Link } from "react-router-dom";
 import Shimmer from "./Shimmer";
   // not using keys (not acceptable) <<<<<<< index as key <<<<<<<< unique id (best practice)
   const Body = () => {
@@ -55,7 +56,7 @@ import Shimmer from "./Shimmer";
                 </button>
             </div>
             <div className="restaurant-container">
-                {filteredRestaurants.map((restaurant) => <RestaurantCard key={restaurant.info.id} resData={restaurant}/>)
+                {filteredRestaurants.map((restaurant) => <Link to={"/restaurants/"+restaurant.info.id} key={restaurant.info.id}><RestaurantCard resData={restaurant}/></Link>)
                 }
             </div>
         </div>
