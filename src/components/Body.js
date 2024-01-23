@@ -1,7 +1,7 @@
   import RestaurantCard from "./RestaurantCard";
-  import {restaurantList} from "../utils/mockData";
   import { useState, useEffect } from "react";
   import { Link } from "react-router-dom";
+  import useOnlineStatus from "../utils/useOnlineStatus";
 import Shimmer from "./Shimmer";
   // not using keys (not acceptable) <<<<<<< index as key <<<<<<<< unique id (best practice)
   const Body = () => {
@@ -9,6 +9,7 @@ import Shimmer from "./Shimmer";
     const [listOfRestautants, setListOfRestautants] = useState([]); //restaurantList
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [searchText, setSearchText] = useState("");
+    const onlineStatus = useOnlineStatus();
     // normal js variable
     // let listOfRestautants = restaurantList;
     // whenever state variable update, react triggers a reconciliaion cycle(re-renders the component)
@@ -29,7 +30,9 @@ import Shimmer from "./Shimmer";
         setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         console.log(json);
     }
-
+    if(onlineStatus === false) {
+        return <h1>Looks like you are offline, Please check your internet connection</h1>
+    }
     // if(listOfRestautants.length === 0){
     //     // return <h1>Loading...</h1>
     //     return <Shimmer/>

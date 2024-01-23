@@ -55,3 +55,10 @@ import {Component} from "path";
 - useEffect()
 
 # 2 types of routing in web apps
+
+# LAZY Loading
+- Chunking
+- Code splitting
+- Dynamic bundling
+- on demand loading
+- dynamic import
