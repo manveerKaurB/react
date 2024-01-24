@@ -40,25 +40,27 @@ import Shimmer from "./Shimmer";
     // console.log("body rendered");
     return listOfRestautants.length === 0 ? <Shimmer/> : (
         <div className="body">
-            <div className="filter">
-                <div className="search">
-                    <input type="text" className="search-box" onChange={(e)=>{
+            <div className="filter flex">
+                <div className="m-4 p-4">
+                    <input type="text" className="border border-solid border-black" onChange={(e)=>{
                         setSearchText(e.target.value);
                     }} value={searchText}/>
-                    <button onClick={()=>{
+                    <button className="px-4 py-2 bg-green-100 m-4 rounded-lg" onClick={()=>{
                         console.log(searchText);
                         const filteredData = listOfRestautants.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()));
                         setFilteredRestaurants(filteredData);
                     }}>Search</button>
                 </div>
-                <button className="filter-button" onClick={()=> {
-                    setListOfRestautants(listOfRestautants.filter(res=> res.info.avgRating > 4.5));
-                    console.log(listOfRestautants);
-                }}>
-                    Top Rated Restaurant
-                </button>
+                <div className="m-4 p-4 flex items-center">
+                    <button className="px-4 py-2 bg-gray-100 m-4 rounded-lg" onClick={()=> {
+                        setListOfRestautants(listOfRestautants.filter(res=> res.info.avgRating > 4.5));
+                        console.log(listOfRestautants);
+                    }}>
+                        Top Rated Restaurant
+                    </button>
+                </div>
             </div>
-            <div className="restaurant-container">
+            <div className="flex flex-wrap">
                 {filteredRestaurants.map((restaurant) => <Link to={"/restaurants/"+restaurant.info.id} key={restaurant.info.id}><RestaurantCard resData={restaurant}/></Link>)
                 }
             </div>
