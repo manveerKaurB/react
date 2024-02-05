@@ -62,3 +62,6 @@ import {Component} from "path";
 - Dynamic bundling
 - on demand loading
 - dynamic import
+
+# Higher Order Component
+- Input - RestaurantCard ==> RestaurantCardPromoted (Output)

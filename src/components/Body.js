@@ -1,4 +1,4 @@
-  import RestaurantCard from "./RestaurantCard";
+  import RestaurantCard, {withPromotedLabel} from "./RestaurantCard";
   import { useState, useEffect } from "react";
   import { Link } from "react-router-dom";
   import useOnlineStatus from "../utils/useOnlineStatus";
@@ -10,6 +10,7 @@ import Shimmer from "./Shimmer";
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [searchText, setSearchText] = useState("");
     const onlineStatus = useOnlineStatus();
+    const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
     // normal js variable
     // let listOfRestautants = restaurantList;
     // whenever state variable update, react triggers a reconciliaion cycle(re-renders the component)
@@ -28,7 +29,7 @@ import Shimmer from "./Shimmer";
         // optional chaining
         setListOfRestautants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        console.log(json);
+        console.log(json?.data?.cards);
     }
     if(onlineStatus === false) {
         return <h1>Looks like you are offline, Please check your internet connection</h1>
@@ -61,7 +62,11 @@ import Shimmer from "./Shimmer";
                 </div>
             </div>
             <div className="flex flex-wrap">
-                {filteredRestaurants.map((restaurant) => <Link to={"/restaurants/"+restaurant.info.id} key={restaurant.info.id}><RestaurantCard resData={restaurant}/></Link>)
+                {filteredRestaurants.map((restaurant) => <Link to={"/restaurants/"+restaurant.info.id} key={restaurant.info.id}>
+                    {/* if the restaurant is open then show open label */}
+                    {restaurant.info.isOpen ? (<RestaurantCardPromoted resData={restaurant}/>) :
+                    (<RestaurantCard resData={restaurant}/>) }
+                    </Link>)
                 }
             </div>
         </div>
