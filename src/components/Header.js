@@ -1,12 +1,15 @@
 import { LOGO_URL } from "../utils/constants";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 const Header = () => {
     const [toggleBtnName,setToggleBtnName] = useState('Login');
     const toggleBtn = () => {
         toggleBtnName === 'Login' ? setToggleBtnName('Logout') : setToggleBtnName('Login');
     }
+    // using context
+    const {loggedInUser} = useContext(UserContext);
     const onlineStatus = useOnlineStatus();
     return (
         <div className="flex justify-between bg-pink-100 shadow-lg mb-2 sm:bg-yellow-100 lg:bg-green-100">
@@ -22,6 +25,7 @@ const Header = () => {
                     <li className="px-4"><Link to="/grocery">Grocery</Link></li>
                     <li className="px-4">Cart</li>
                     <button className="login-btn" onClick={toggleBtn}>{toggleBtnName}</button>
+                    <li className="px-4 font-bold">{loggedInUser}</li>
                 </ul>
             </div>
         </div>

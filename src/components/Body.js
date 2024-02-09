@@ -1,8 +1,9 @@
   import RestaurantCard, {withPromotedLabel} from "./RestaurantCard";
-  import { useState, useEffect } from "react";
+  import { useState, useEffect, useContext } from "react";
   import { Link } from "react-router-dom";
   import useOnlineStatus from "../utils/useOnlineStatus";
-import Shimmer from "./Shimmer";
+  import Shimmer from "./Shimmer";
+  import UserContext from "../utils/UserContext";
   // not using keys (not acceptable) <<<<<<< index as key <<<<<<<< unique id (best practice)
   const Body = () => {
     // local state variable - super power variable
@@ -10,6 +11,7 @@ import Shimmer from "./Shimmer";
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [searchText, setSearchText] = useState("");
     const onlineStatus = useOnlineStatus();
+    const { loggedInUser,setUserName} = useContext(UserContext);
     const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
     // normal js variable
     // let listOfRestautants = restaurantList;
@@ -59,6 +61,10 @@ import Shimmer from "./Shimmer";
                     }}>
                         Top Rated Restaurant
                     </button>
+                </div>
+                <div className="m-4 p-4 flex items-center">
+                    <label>UserName: </label>
+                    <input className="border border-black" value={loggedInUser} onChange={(e)=> setUserName(e.target.value)}></input>
                 </div>
             </div>
             <div className="flex flex-wrap">
