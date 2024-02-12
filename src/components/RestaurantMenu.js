@@ -24,10 +24,6 @@ const RestaurantMenu = () => {
             <h1 className="font-bold my-6 text-2xl">{name}</h1>
             <p className="text-bold text-lg">{cuisines.join(', ')} - {costForTwoMessage}</p>
             {/* categories accordian - title, header, body */}
-            {/* <ul>
-            {itemCards.map((item)=>{return <li key={item.card.info.id}>{item.card.info.name} - Rs. {item.card.info.price /100 || item.card.info.defaultPrice / 100}</li>
-            })}
-             </ul> */}
             {categories.map((category, index) => (
             <RestaurantCategory 
             data={category?.card?.card} 

@@ -65,3 +65,11 @@ import {Component} from "path";
 
 # Higher Order Component
 - Input - RestaurantCard ==> RestaurantCardPromoted (Output)
+
+# REDUX
+- INSTALL @reduxjs/toolkit and react-redux
+- build our store
+- connect our store to our app
+- Slice (cartSlice) in slice we will define reducers for different actions
+- dispatch(action)
+- selector
