@@ -31,7 +31,7 @@
         // optional chaining
         setListOfRestautants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        console.log(json?.data?.cards);
+        console.log("filteredRestaurants",filteredRestaurants);
     }
     if(onlineStatus === false) {
         return <h1>Looks like you are offline, Please check your internet connection</h1>
@@ -57,7 +57,6 @@
                 <div className="m-4 p-4 flex items-center">
                     <button className="px-4 py-2 bg-gray-100 m-4 rounded-lg" onClick={()=> {
                         setListOfRestautants(listOfRestautants.filter(res=> res.info.avgRating > 4.5));
-                        console.log(listOfRestautants);
                     }}>
                         Top Rated Restaurant
                     </button>

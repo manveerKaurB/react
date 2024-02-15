@@ -73,3 +73,20 @@ import {Component} from "path";
 - Slice (cartSlice) in slice we will define reducers for different actions
 - dispatch(action)
 - selector
+
+# Types of testing (Developer)
+- Unit Testing
+- Integration Testing
+- End to End Testing - e2e testing
+
+# Setting up testing in our app
+- Install React testing library
+- Install jest
+- Install babel dependencies
+- configure babel
+- configure parcel config file to disable default babel transpilation
+- jest configuration (npx jest --init)
+- install jsdom library
+- install @babel/preset-react - to make jsx work in test cases
+- include @babel/preset-react inside my babel.config.js
+- install @testing-library/jest-dom
