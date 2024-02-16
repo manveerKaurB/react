@@ -31,7 +31,6 @@
         // optional chaining
         setListOfRestautants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        console.log("filteredRestaurants",filteredRestaurants);
     }
     if(onlineStatus === false) {
         return <h1>Looks like you are offline, Please check your internet connection</h1>
@@ -45,20 +44,19 @@
         <div className="body">
             <div className="filter flex">
                 <div className="m-4 p-4">
-                    <input type="text" className="border border-solid border-black" onChange={(e)=>{
+                    <input type="text" data-testid="searchInput" className="border border-solid border-black" onChange={(e)=>{
                         setSearchText(e.target.value);
                     }} value={searchText}/>
                     <button className="px-4 py-2 bg-green-100 m-4 rounded-lg" onClick={()=>{
-                        console.log(searchText);
                         const filteredData = listOfRestautants.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()));
                         setFilteredRestaurants(filteredData);
                     }}>Search</button>
                 </div>
                 <div className="m-4 p-4 flex items-center">
                     <button className="px-4 py-2 bg-gray-100 m-4 rounded-lg" onClick={()=> {
-                        setListOfRestautants(listOfRestautants.filter(res=> res.info.avgRating > 4.5));
+                        setFilteredRestaurants(listOfRestautants.filter(res=> res.info.avgRating > 4.5));
                     }}>
-                        Top Rated Restaurant
+                        Top Rated Restaurants
                     </button>
                 </div>
                 <div className="m-4 p-4 flex items-center">
