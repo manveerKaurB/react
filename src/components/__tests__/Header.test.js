@@ -39,7 +39,7 @@ describe("test cases for header component", () => {
         expect(cartItems).toBeInTheDocument();
     });
 
-    it("should change login button to logout on click", () => {
+    it("should toggle login button to logout and vice versa on click", () => {
         //render
         render(<BrowserRouter>
                <Provider store={appStore}>
@@ -52,7 +52,8 @@ describe("test cases for header component", () => {
         fireEvent.click(loginBtn);
         const logoutBtn = screen.getByRole("button", {name: "Logout"});
         expect(logoutBtn).toBeInTheDocument();
-        
-       
+        fireEvent.click(logoutBtn);
+        expect(loginBtn).toBeInTheDocument();
+         
     });
 });

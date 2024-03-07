@@ -33,7 +33,7 @@
         setFilteredRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     }
     if(onlineStatus === false) {
-        return <h1>Looks like you are offline, Please check your internet connection</h1>
+        return <h1 data-testid="offlineMsg">Looks like you are offline, Please check your internet connection</h1>
     }
     // if(listOfRestautants.length === 0){
     //     // return <h1>Loading...</h1>
@@ -61,7 +61,7 @@
                 </div>
                 <div className="m-4 p-4 flex items-center">
                     <label>UserName: </label>
-                    <input className="border border-black" value={loggedInUser} onChange={(e)=> setUserName(e.target.value)}></input>
+                    <input data-testid="userNameInput" className="border border-black" value={loggedInUser} onChange={(e)=> setUserName(e.target.value)}></input>
                 </div>
             </div>
             <div className="flex flex-wrap">
